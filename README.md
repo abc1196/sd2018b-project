@@ -21,17 +21,17 @@ Ana Valderrama 	- A00065868
 * Kubernetes Cluster  
   
 ### Description  
-For this project we are going to deploy a kubernetes cluster with 3 nodes, one master and two workers. For that, we are going to use Google Cloud Platform, that provides a lot of benefits like: load balancing, automatic scaling, node pools, etc. To achieve this is necessary to follow a series of steps, provided in a easy Google guide (https://google.qwiklabs.com/focuses/878?locale=en&parent=catalog&qlcampaign=77-18-gcpd-236&utm_source=gcp&utm_medium=documentation).  
-To demostrate the correct functioning of the cluster we are going to deploy a pod executing a web service. The deployment will have 3 replicas and each pod will have a label. This application could be accessed through the browser.  
+For this project we are going to deploy a kubernetes cluster with 3 nodes, one master and two workers. For that, we are going to use Google Cloud Platform, that provides a lot of benefits like: load balancing, automatic scaling, node pools, etc. To achieve this is necessary to follow a series of steps, provided in an easy Google guide (https://google.qwiklabs.com/focuses/878?locale=en&parent=catalog&qlcampaign=77-18-gcpd-236&utm_source=gcp&utm_medium=documentation).  
+To demonstrate the correct functioning of the cluster we are going to deploy a pod executing a web service. The deployment will have 3 replicas and each pod will have a label. This application could be accessed through the browser.  
   
 ### Development  
-The goals of this project were achieved using Google Cloud Platform. First step is to log in to **Google Cloud Console**, if you have an GCP account is preferred to use the one provided for ***qwiklabs*** to not generate charges.  
+The goals of this project were achieved using Google Cloud Platform. First step is to log in to **Google Cloud Console**, if you have a GCP account is preferred to use the one provided for ***qwiklabs*** to not generate charges.  
 Once we are in, it is necessary to activate Google Cloud Shell to access to command-line. When the environment is provisioned and connected, we can start. This shell is a virtual machine that has all the tools we will need.  
 The project on Google Cloud is already created, so we have to set the default compute zone, and then it is ready to create the cluster.  
 ```  
 gcloud config set compute/zone us-central1-a  
 ```    
-A cluster consists of at least one machine, which corresponds to the master, an multiple worker machines called nodes. To create the cluster we run the following command:  
+A cluster consists of at least one machine, which corresponds to the master, and multiple worker machines called nodes. To create the cluster we run the following command:  
 ```   
 gcloud container clusters create sd2018b-project  
 ```   
@@ -39,7 +39,7 @@ Where sd2018b-project corresponds to the name of the cluster. It is really simpl
 ```  
 gcloud container clusters get-credentials sd2018b-project  
 ```  
-Now, we are going to deploy a web aapplication, that will be accesible through the browser. We run the application on the cluster using a sample image provided by Google and we defined a port that container will expose.  
+Now, we are going to deploy a web application that will be accessible through the browser. We run the application on the cluster using a sample image provided by Google and we defined a port that container will expose.  
 ```  
 kubectl run hello-server --image=gcr.io/google-samples/hello-app:1.0 --port 8080    
 ```   
@@ -54,7 +54,7 @@ kubectl expose deployment hello-server --type="LoadBalancer"
 Once the nodes are running in the cluster, we can access to the web browser, and check that the web application is ok.    
 ![][2]  
 **Figure 2.** Web application running.  
-Afterwards, we deleted a node to see if the application contined running, we executed the following command:  
+Afterwards, we deleted a node to see if the application continued running, we executed the following command:  
 ![][3]  
 **Figure 3.** Command executed to delete a node and message showed.   
 We appreciate only two nodes on console, so we went check the web service and it continued working.  
